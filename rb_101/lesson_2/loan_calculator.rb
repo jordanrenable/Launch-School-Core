@@ -5,7 +5,7 @@ def integer?(number)
 end
 
 def float?(number)
-  Float(number) rescue false  
+  Float(number) rescue false
 end
 
 def valid_number?(number)
@@ -22,7 +22,7 @@ loop do
     puts '=>Please input the loan amount'
     loan_amount = gets.chomp
     loan_amount = loan_amount.delete(',')
-  
+
     if valid_number?(loan_amount)
       loan_amount = loan_amount.to_f
       break
@@ -34,7 +34,7 @@ loop do
   loop do
     puts '=>Please input the loan duration in years'
     duration_in_years = gets.chomp
-  
+
     if valid_number?(duration_in_years)
       duration_in_years = duration_in_years.to_f
       break
@@ -50,7 +50,7 @@ loop do
 
     if valid_number?(apr)
       apr = apr.to_f
-     break
+      break
     else
       puts "=>That doesn't look like a valid number."
     end
@@ -63,12 +63,12 @@ loop do
 
   puts '=>Calculating...'
 
-  monthly_payment = loan_amount * 
-                  (monthly_interest / 
-                  (1 - (1 + monthly_interest)**(-(duration_in_months))))
+  monthly_payment = loan_amount *
+                    (monthly_interest /
+                    (1 - (1 + monthly_interest)**(-(duration_in_months))))
 
   puts "=>Your monthly payment will be #{monthly_payment}"
-  
+
   puts "=> Would you like to make another calculation? Y to calculate"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
