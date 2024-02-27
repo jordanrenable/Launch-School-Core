@@ -7,20 +7,24 @@ end
 
 loop do
   choice = ''
-  
-  winning_combos = {
-    rock: ['scissors', 'lizard'],
-    paper: ['rock', 'spock'],
-    scissors: ['lizard', 'paper'],
-    lizard: ['paper', 'spock'],
-    spock: ['rock', 'scissors']
-    }
-  
+
+  winning_combos = { rock: ['scissors', 'lizard'],
+                     paper: ['rock', 'spock'],
+                     scissors: ['lizard', 'paper'],
+                     lizard: ['paper', 'spock'],
+                     spock: ['rock', 'scissors'] }
+
+  abbreviated_choices = { r: 'rock',
+                          p: 'paper',
+                          s: 'scissors',
+                          l: 'lizard',
+                          sp: 'spock' }
+
   player_wins = 0
   computer_wins = 0
-  
+
   until player_wins == 3 || computer_wins == 3
-  
+
     loop do
       prompt(<<~MSG
         Choose one: #{CHOICES.join(', ')}.
@@ -30,7 +34,7 @@ loop do
         'l' for 'lizard'
         'sp' for 'spock'
         MSG
-        )
+            )
 
       choice = gets.chomp
 
@@ -40,20 +44,12 @@ loop do
         prompt("That doesn't look like a valid choice.")
       end
     end
-  
-    choice = 
-      case choice
-      when 'r' then 'rock'
-      when 'p' then 'paper'
-      when 's' then 'scissors'
-      when 'l' then 'lizard'
-      when 'sp' then 'spock'
-      end
-  
+
+    choice = abbreviated_choices[choice.to_sym]
     computer_choice = CHOICES.sample
 
     prompt("You chose #{choice}; Computer chose #{computer_choice}")
-  
+
     if winning_combos[choice.to_sym].include?(computer_choice)
       prompt("You won!")
       player_wins += 1
@@ -66,13 +62,13 @@ loop do
 
     prompt("Score: You- #{player_wins} Computer- #{computer_wins}")
   end
-  
+
   if player_wins == 3
     prompt("You are the grand winner!")
   else
     prompt("Computer is the grand winner!")
   end
-  
+
   prompt("Do you want to play again?")
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')

@@ -7,14 +7,12 @@ end
 
 loop do
   choice = ''
-  
-  winning_combos = {
-    rock: ['scissors', 'lizard'],
-    paper: ['rock', 'spock'],
-    scissors: ['lizard', 'paper'],
-    lizard: ['paper', 'spock'],
-    spock: ['rock', 'scissors']
-    }
+
+  winning_combos = { rock: ['scissors', 'lizard'],
+                     paper: ['rock', 'spock'],
+                     scissors: ['lizard', 'paper'],
+                     lizard: ['paper', 'spock'],
+                     spock: ['rock', 'scissors'] }
 
   loop do
     prompt(<<~MSG
@@ -25,7 +23,7 @@ loop do
       'l' for 'lizard'
       'sp' for 'spock'
       MSG
-      )
+          )
 
     choice = gets.chomp
 
@@ -35,20 +33,20 @@ loop do
       prompt("That doesn't look like a valid choice.")
     end
   end
-  
-  choice = 
-        case choice
-        when 'r' then 'rock'
-        when 'p' then 'paper'
-        when 's' then 'scissors'
-        when 'l' then 'lizard'
-        when 'sp' then 'spock'
-        end
-  
+
+  choice =
+    case choice
+    when 'r' then 'rock'
+    when 'p' then 'paper'
+    when 's' then 'scissors'
+    when 'l' then 'lizard'
+    when 'sp' then 'spock'
+    end
+
   computer_choice = CHOICES.sample
 
   prompt("You chose #{choice}; Computer chose #{computer_choice}")
-  
+
   if winning_combos[choice.to_sym].include?(computer_choice)
     prompt("You won!")
   elsif winning_combos[computer_choice.to_sym].include?(choice)
