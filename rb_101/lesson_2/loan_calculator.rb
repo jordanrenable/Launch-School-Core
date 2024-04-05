@@ -56,7 +56,7 @@ loop do
     end
   end
 
-  apr = (apr / 100) if apr >= 0.25
+  apr = (apr / 100) if apr >= 0.25 # in case APR is entered in decimal format
 
   duration_in_months = duration_in_years * 12
   monthly_interest = apr / 12
