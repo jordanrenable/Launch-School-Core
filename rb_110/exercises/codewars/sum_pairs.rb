@@ -56,36 +56,46 @@ if it has multiple solutions, evaluate the index of the second element of each p
   return/keep whichever pairs second element has the lower index
 
 Coding
+
+  arr.each_with_index do |int , index|
+    for time in (1...arr.size) do
+      p time
+      if int + arr[time] == num
+        pairs << [[int, index], [arr[time], time]]
+      end
+    end
+  end
+
+
+
 =end
 
 def sum_pairs(arr, num)
   pairs = []
   arr.each_with_index do |int , index|
     counter = index + 1
-    while (index + 1) < arr.size
+    while counter < arr.size
       if int + arr[counter] == num
         pairs << [[int, index], [arr[counter], counter]]
       end
-      
       counter += 1
-      break if counter == arr.size
     end
   end
-  
+
   if pairs.empty?
     nil
   elsif pairs.size == 1
     [pairs[0][0][0], pairs[0][1][0]]
   else
-    max_index = arr.size - 1
+    lowest_index = arr.size - 1
     lowest = nil
     pairs.each do |pair|
-      if pair[1][1] <= max_index
-        max_index = pair[1][1]
+      if pair[1][1] <= lowest_index
+        lowest_index = pair[1][1]
         lowest = [pair[0][0], pair[1][0]]
       end
     end
-    lowest
+   lowest
   end
 end
 
@@ -106,3 +116,5 @@ p sum_pairs(l5, 10)  == [3, 7]
 p sum_pairs(l6, 8)  == [4, 4]
 p sum_pairs(l7, 0)  == [0, 0]
 p sum_pairs(l8, 10)  == [13, -3]
+
+
