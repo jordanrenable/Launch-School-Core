@@ -42,9 +42,6 @@ for each word, iterate over each character
     push the returned integer into an integer array
 
 edge case- word is only two letters, slice +- wont work
-
-=end
-
 def decode(array)
   integers = []
   array.each do |word|
@@ -61,6 +58,23 @@ def decode(array)
     end
   end
   integers
+end
+=end
+
+def decode(array)
+  array.each_with_object([]) do |word, integers|
+    uppercase_indices = []
+    word.each_char.with_index do |letter, index|
+      if ("A".."Z").include?(letter)
+        uppercase_indices << index
+      end
+    end
+    if word.size <= 2 || uppercase_indices.size < 2
+      integers << 0
+    else
+      integers << word[uppercase_indices[0]...uppercase_indices[1]].size - 1
+    end
+  end
 end
 
 codes = ["WooT", "exTRa", "pAlindRome"]
