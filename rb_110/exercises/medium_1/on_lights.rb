@@ -53,12 +53,21 @@ Select by index the ones that are on
 
 
 up to number of switches, 
-=end
+
+def lights(n)
+  result = []
+  (1..n).each do |switch_num|
+    switch_state = false
+    (1..n).each do |pass_num|
+      switch_state = !switch_state if switch_num % pass_num == 0
+    end
+    result << switch_num if switch_state
+  end
+  result
+end
 
 
-
-
-
+ORIGINAL SOLUTION MAY 31
 def lights_on(switches)
   array = []
   switches.times { |_| array << false }
@@ -84,7 +93,27 @@ def lights_on(switches)
   on_switches
 end
 
-p lights_on(1000)
+
+ on, off = switches.partition { |k, v| v == true }
+  off_lights = off.to_h.keys
+  on_lights = on.to_h.keys
+
+REFACTORED SOLUTION JULY 11
+=end
+
+def on_lights(number)
+  switches = (1..number).each_with_object({}) { |num, hash| hash[num] = false }
+  1.upto(number) do |iteration|
+    switches.each do |k, v|
+      if k % iteration == 0
+        switches[k] = !v
+      end
+    end
+  end
+  switches.select { |k, v| v == true }.keys
+end
+
+p on_lights(1000)
 
 
 def joinand(arr, delimiter=', ', word='and')
@@ -98,4 +127,4 @@ def joinand(arr, delimiter=', ', word='and')
   end
 end
 
-puts "Lights #{joinand(lights_on(1000))} are on."
+puts "Lights #{joinand(on_lights(1000))} are on."
