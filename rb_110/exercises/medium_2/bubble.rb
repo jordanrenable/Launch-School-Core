@@ -13,17 +13,17 @@ loop? break if a swap count is 0
 
 
 def bubble_sort!(arr)
-  n = arr.size - 2
+  last = arr.size - 2
   loop do
-    newn = 0
-    (0..n).each do |ind|
+    newlast = 0
+    (0..last).each do |ind|
       if arr[ind] > arr[ind + 1]
         arr[ind], arr[ind + 1] = arr[ind + 1], arr[ind]
-        newn = ind
+        newlast = ind
       end
     end
-    n = newn
-    break if n == 0
+    last = newlast
+    break if last == 0
   end
   arr
 end
