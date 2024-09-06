@@ -1,13 +1,19 @@
 =begin
-Create a method that takes an array of integers as an argument. Determine and return the index N for which all numbers with an index less than N sum to the same value as the numbers with an index greater than N. If there is no index that would make this happen, return -1.
+Create a method that takes an array of integers as an argument. Determine and 
+return the index N for which all numbers with an index less than N sum to the 
+same value as the numbers with an index greater than N. If there is no index 
+that would make this happen, return -1.
 
-If you are given an array with multiple answers, return the index with the smallest value.
+If you are given an array with multiple answers, return the index with the 
+smallest value.
 
-The sum of the numbers to the left of index 0 is 0. Likewise, the sum of the numbers to the right of the last element is 0.
+The sum of the numbers to the left of index 0 is 0. Likewise, the sum of the 
+numbers to the right of the last element is 0.
 
 PROBLEM
 input- array of integers
-output- integer, representing the index for which the sum of all elements on the left is equal to the sum of all elements on the right
+output- integer, representing the index for which the sum of all elements on the 
+left is equal to the sum of all elements on the right
 
 EXAMPLES
 
@@ -19,7 +25,8 @@ output- integer
 
 ALGORITHM
 take an array
-for each index, check if the sum of the left side digits is equal to the sum of the right side digits
+for each index, check if the sum of the left side digits is equal to the sum of 
+the right side digits
   establish the range- 0 to max index (max index = array size minus 1)
   if equal return the index
 

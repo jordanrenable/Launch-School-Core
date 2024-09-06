@@ -43,7 +43,6 @@ increment pair counter by the value / 2
 
 return pair counter
 
-=end
 
 def pairs(array)
   pairs = 0
@@ -58,6 +57,15 @@ def create_hash(array)
   array.each_with_object({}) do |el, hash|
     hash.key?(el) ? hash[el] += 1 : hash[el] = 1
   end
+end
+
+=end
+
+def pairs(array)
+  num_count = array.each_with_object({}) do |int, hash|
+    hash[int] = array.count(int) if array.count(int) > 1
+  end
+  num_count.values.sum / 2
 end
 
 p pairs([3, 1, 4, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7]) == 3

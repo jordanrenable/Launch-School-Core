@@ -43,6 +43,13 @@ def longest_vowel_substring(string)
   longest_vowel_substring
 end
 
+def longest_vowel_substring(string)
+  only_vowel_substrings = string.gsub(/[^aeiou]/, ' ').split
+  return 0 if only_vowel_substrings.empty?
+  only_vowel_substrings.max_by { |substring| substring.size }.size
+end
+
+
 p longest_vowel_substring('cwm') == 0
 p longest_vowel_substring('many') == 1
 p longest_vowel_substring('launchschoolstudents') == 2

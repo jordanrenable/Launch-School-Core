@@ -55,7 +55,7 @@ def next_prime(int)
 end
 
 def is_prime?(int)
-  return true if (1..3).include?(int)
+  return true if (2..3).include?(int)
   return false if int % 2 == 0
   top = int / 2
   3.step(top, 2) do |num|

@@ -48,7 +48,15 @@ return the sum of the integers in the array
   array
   sum method
   reduce/inject
-
+  
+*** this method has fewer lines, but is less efficient***
+def find_multiples_of_7_and_11(int)
+  multiples = []
+  2.upto(int - 1) do |num|
+    multiples << num if num % 7 == 0 || num % 11 == 0
+  end
+  multiples
+end
 =end
 
 def seven_eleven(int)
@@ -59,10 +67,13 @@ end
 
 def find_multiples_of_7_and_11(int)
   multiples = []
-  2.upto(int - 1) do |num|
-    multiples << num if num % 7 == 0 || num % 11 == 0
+  7.step((int - 1), 7) do |num|
+    multiples << num
   end
-  multiples
+  11.step((int - 1), 11) do |num|
+    multiples << num
+  end
+  multiples.uniq
 end
 
 p seven_eleven(10) == 7

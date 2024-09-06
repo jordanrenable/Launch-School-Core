@@ -22,7 +22,7 @@ output- integer
 ALGORITHM
 take a string of digits
 find all the 4 length substrings
-  figure out what our max index is
+  figure out what our max index is (string size minus 4?)
 
 find the product for each substring and return the highest one
   convert each substring to individual characters, then integers

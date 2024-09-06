@@ -22,6 +22,14 @@ ALGORITHM
 take a string
 count each instance of string 2 within string 1, without counting overlapping instances
 
+
+def count_substrings(str1, str2)
+  while str1.include?(str2)
+    str1 = str1.sub(str2, '*')
+  end
+  str1.count('*')
+end
+
 =end
 
 def count_substrings(str1, str2)

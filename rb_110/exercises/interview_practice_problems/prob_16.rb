@@ -1,5 +1,7 @@
 =begin
-Create a method that returns the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. You may assume that the input string contains only alphanumeric characters.
+Create a method that returns the count of distinct case-insensitive alphabetic 
+characters and numeric digits that occur more than once in the input string. You 
+may assume that the input string contains only alphanumeric characters.
 
 PROBLEM
 input- string

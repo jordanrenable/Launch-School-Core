@@ -39,6 +39,15 @@ def minimum_sum(array)
   subarrs.min_by { |sub| sub.sum }.sum
 end 
 
+def minimum_sum(array)
+  return nil if array.size < 5
+  return array.sum if array.size == 5
+  sums = []
+  max_index = array.size - 5
+  0.upto(max_index) { |ind| sums << array[ind, 5].sum }
+  sums.min
+end
+
 p minimum_sum([1, 2, 3, 4]) == nil
 p minimum_sum([1, 2, 3, 4, 5, -5]) == 9
 p minimum_sum([1, 2, 3, 4, 5, 6]) == 15

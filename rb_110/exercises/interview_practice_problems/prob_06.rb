@@ -1,5 +1,7 @@
 =begin
-Create a method that takes a string argument and returns a hash in which the keys represent the lowercase letters in the string, and the values represent how often the corresponding letter occurs in the string.
+Create a method that takes a string argument and returns a hash in which the 
+keys represent the lowercase letters in the string, and the values represent 
+how often the corresponding letter occurs in the string.
 
 PROBLEM
 input- string
@@ -25,6 +27,14 @@ if the lower case character array includes the character,
 return the hash
 
 =end
+def count_letters(string)
+  char_count = {}
+  string.delete('^a-z').each_char do |char|
+    char_count.key?(char) ? char_count[char] += 1 : char_count[char] = 1
+  end
+  char_count
+end
+
 
 def count_letters(string)
   char_count = {}

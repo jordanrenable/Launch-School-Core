@@ -34,15 +34,30 @@ transform the array of substrings to their integer counterparts
   - iterate over each substring, convert to an integer, and store in new array
 iterate over the array of integers and count and return how many of the elements are even
   - could be done by checking if the int is even and incrementing a counter, or by using count
-=end
+
 
 def even_substrings(string)
-  substrings = find_all_substrings(string)
+  substrings = find_substrings(string)
   int_arr = substrings.map { |el| el.to_i }
   int_arr.count { |int| int.even? }
 end
 
-def find_all_substrings(string)
+def even_substrings(string)
+  substrings = find_substrings(string)
+  even_substring_count = 0
+  substrings.each do |substring|
+    even_substring_count += 1 if substring.to_i.even?
+  end
+  even_substring_count
+end
+=end
+
+def even_substrings(string)
+  substrings = find_substrings(string)
+  substrings.count { |substring| substring.to_i.even? }
+end
+
+def find_substrings(string)
   substrings = []
   max_index = string.size - 1
   0.upto(max_index) do |start|
